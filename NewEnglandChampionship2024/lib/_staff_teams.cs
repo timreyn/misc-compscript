@@ -18,7 +18,9 @@ Define("StaffTeams", [
     Tuple(2014PHIL02, GREEN),
     Tuple(2017CIRA01, DATA),
     Tuple(2022CHES03, DATA),
-    Tuple(2023GRAY10, DATA),
+    Tuple(2023GRAY10, DATA)
 ])
 
 Define("StaffTeam", Switch({1, Person}, StaffTeams(), ""))
+
+Define("IsStaff", Not((StaffTeam({1, Person}) == "")))

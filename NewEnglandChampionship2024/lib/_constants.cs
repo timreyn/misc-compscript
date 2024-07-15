@@ -8,3 +8,4 @@ Define("MainStages", [RED, BLUE])
 
 #define DATA "Data"
 #define FLOATING "Floating"
+#define DELEGATE "delegate"
