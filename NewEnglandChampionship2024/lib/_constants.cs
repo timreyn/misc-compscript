@@ -5,3 +5,6 @@
 
 Define("Stages", [RED, BLUE, GREEN])
 Define("MainStages", [RED, BLUE])
+
+#define DATA "Data"
+#define FLOATING "Floating"
