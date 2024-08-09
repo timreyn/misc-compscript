@@ -2,7 +2,7 @@
 #include "../lib/_staff_teams.cs"
 
 Define("RoundOneAssignmentSets",
-       [AssignmentSet("Delegates", HasRole(DELEGATE), true),
+       [AssignmentSet("Delegates", IsDelegate(Arg<Person>()), true),
         AssignmentSet("Data", (StaffTeam(Arg<Person>()) == DATA), (Stage() == RED)),
         AssignmentSet("Everyone", true, true)])
 
