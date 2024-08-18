@@ -1,4 +1,5 @@
 #include "../lib/_constants.cs"
+#include "../lib/_staff_teams.cs"
 
 Define("ScrambleSpeedWeight",
        [Tuple(_333, 3),
@@ -21,7 +22,7 @@ Define("ScrambleReferences",
          Tuple(_444, 1:00s),
          Tuple(_555, 1:30s),
          Tuple(_666, 3:00s),
-         Tuple(_777, 2:30s),
+         Tuple(_777, 4:30s),
          Tuple(_sq1, 30s),
          Tuple(_clock, 12s),
          Tuple(_pyram, 8s),
@@ -139,12 +140,15 @@ Define("RoundOneStaffAssignments",
              Persons(And(Or(CompetingInRound({1, Round}, Arg<Person>()),
                             IsStaff(Arg<Person>()),
                             In(Arg<Person>(), {2, Array<Person>()})),
-                         Not((Arg<Person>() == 2022ALCO02)))),
+                         Not((Arg<Person>() == 2022ALCO02)),
+                         Not((Arg<Person>() == 2021WILL06)))),
              {3, Array<AssignmentJob>},
              StaffScorers({1, Round}, EventForRound({1, Round}), {4, Number})
            ))
 
 Define("Judges", Job("judge", {1, Number}))
-Define("Scramblers", Job("scrambler", {1, Number}))
+Define("Scramblers", Job("scrambler", {1, Number},
+       eligibility=(PersonalBest(Switch({2, Event}, EventsToScramblingEvents())) <
+                    Switch(Switch({2, Event}, EventsToScramblingEvents()), ScrambleReferences()))))
 Define("Runners", Job("runner", {1, Number}))
 Define("Delegates", Job("Delegate", {1, Number}, eligibility=Or(HasRole(DELEGATE), HasRole(TRAINEE_DELEGATE))))
