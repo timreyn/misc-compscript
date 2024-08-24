@@ -11,3 +11,9 @@ Define("GroupScorers",
        Concat(Map(Stages(), ByFilters((StaffTeam(Arg<Person>()) == Arg<String>()),
                                       (Stage() == Arg<String>()), 10)),
               [ByMatchingValue(FirstName(), -5)]))
+
+Define("AssignFinals",
+       AssignGroups({1, Round},
+                    [AssignmentSet("Everyone", true, true)],
+                    [],
+                    [StationAssignmentRule(true, "ascending", RoundPosition(PreviousRound({1, Round})))]))
